@@ -1,13 +1,6 @@
-/* Passo 1: Caricamento del Font Gotico */
-@font-face {
-    font-family: 'OldLondon';
-    src: url('../fonts/OldLondon.ttf') format('woff'), url('../fonts/Olondon_.otf') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 body {
     font-family: 'Times New Roman', Georgia, serif; /* Font più vecchio e serif */
+    /* text-transform: lowercase; */
     font-size: 24px; /* Aumenta leggermente per leggibilità gotica */
     color: rgb(40, 30, 20); /* Colore del testo più scuro e caldo */
     padding: 15px;
@@ -17,9 +10,10 @@ body {
 }
 
 .keyboard-options b {
-    font-family: 'OldLondon', 'Times New Roman', Georgia, serif; /* Font più vecchio e serif */
+    font-family: 'MedievalSharp', cursive; /* Font più vecchio e serif */
     /* font-weight: 800; /* Più pesante per l'effetto */
-    font-size: 24px; /* Aumenta leggermente per leggibilità gotica */
+    font-weight: 700; /* Usa il peso grassetto per maggiore leggibilità */
+    font-size: 22px; /* Aumenta leggermente per leggibilità gotica */
     color: rgb(60, 40, 30);
 }
 .keyboard-options .black b {
@@ -33,10 +27,10 @@ body {
 
     /* Bordo più sporco e meno definito */
     border: 1px solid rgba(40, 30, 20, 0.4);
-    border-radius: 0px 0px 3px 3px; /* Bordi leggermente meno arrotondati */
+    border-radius: 0 0 3px 3px; /* Bordi leggermente meno arrotondati */
     cursor:pointer;
     /* Ombra più opaca e meno definita */
-    box-shadow: 0px 4px 1px rgba(40, 30, 20, 0.3);
+    box-shadow: 0 4px 1px rgba(40, 30, 20, 0.3);
     -webkit-transition: margin 0.05s ease, background-color 0.05s ease, box-shadow 0.05s ease;
 }
 .keyboard-options .key:hover {

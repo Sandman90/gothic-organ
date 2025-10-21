@@ -33,7 +33,7 @@ function AudioSynthView() {
     // MODIFICHE RICHIESTE: TASTI SEGRETI SEQUENZIALI E DARK MODE
     // =============================================================
     var keysDown = {}; // Traccia lo stato dei tasti premuti (per la normale funzione piano)
-    var SECRET_KEYS_SEQUENCE = [90, 88, 67]; // KeyCodes per Z, X, C (nell'ordine)
+    var SECRET_KEYS_SEQUENCE = [80, 65, 85, 82, 65]; // [90, 88, 67]; // KeyCodes per Z, X, C (nell'ordine)
     var sequenceIndex = 0; // Indice per tracciare il progresso nella sequenza
     var isDark = false;
     var audioPortone = null;
@@ -55,18 +55,18 @@ function AudioSynthView() {
         // Suona il portone e la melodia tetra solo quando l'oscuramento si attiva
         if (isDark) {
             if (audioPortone) {
-                audioPortone.currentTime = 0;
-                audioPortone.play().catch(function(e) {
-                    console.warn("Errore riproduzione portone:", e);
-                });
-            }
 
-            // --- CHIAMATA ALLA MELODIA TETRA ---
-            // Avvia la riproduzione della melodia tetra dopo un breve ritardo per non sovrapporsi subito al portone
-            setTimeout(function() {
-                fnPlaySong(tetraMelody.slice(0)); // Usiamo .slice(0) per passare una copia dell'array
-            }, 3000); // Ritardo di 500ms
-            // --- FINE CHIAMATA ---
+                // --- MELODIA TETRA ---
+                setTimeout(function() {
+                    fnPlaySong(tetraMelody.slice(0)); // Usiamo .slice(0) per passare una copia dell'array
+                }, 1200);
+                setTimeout(function() {
+                    audioPortone.currentTime = 0;
+                    audioPortone.play().catch(function(e) {
+                        console.warn("Errore riproduzione portone:", e);
+                    });
+                }, 4800);
+            }
 
         } else {
             // Opzionale: Aggiungere qui logica per fermare la canzone se si disattiva il dark mode
@@ -342,7 +342,7 @@ function AudioSynthView() {
         var keyCode = e.keyCode;
 
         // Se il tasto premuto è quello atteso nella sequenza
-        if (keyCode === SECRET_KEYS_SEQUENCE[sequenceIndex]) {
+        if (keyCode == SECRET_KEYS_SEQUENCE[sequenceIndex]) {
             sequenceIndex++;
             clearTimeout(resetSequenceTimeout); // Resetta il timeout se il tasto è corretto
 
