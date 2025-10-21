@@ -6,6 +6,28 @@ function AudioSynthView() {
     var __audioSynth = new AudioSynth();
     __audioSynth.setVolume(0.5);
     var __octave = 3;
+    /* Melodia Tetra (Tritoni e Note Basse) */
+    var tetraMelody = [
+        // Basso costante e lento (C in ottava bassa)
+        ['C,-1', 4],
+        ['C,-1', 8],
+        ['C,-1', 4],
+
+        // Arpeggio inquietante (C minore)
+        ['C,0', 8],
+        ['Eb,0', 8],
+        ['G,0', 4],
+
+        // Pausa e Tensione (Tritono D-G#)
+        ['D,0', 8],
+        ['G#,0', 4],
+
+        // Risoluzione lenta e minacciosa
+        ['C,0', 2],
+
+        // Suono finale prolungato e basso
+        ['B,-1', 1]
+    ];
 
     // =============================================================
     // MODIFICHE RICHIESTE: TASTI SEGRETI SEQUENZIALI E DARK MODE
@@ -30,12 +52,24 @@ function AudioSynthView() {
             isDark = keyboardHolder.classList.contains('dark-mode');
         }
 
-        // Suona il portone solo quando l'oscuramento si attiva
-        if (isDark && audioPortone) {
-            audioPortone.currentTime = 0;
-            audioPortone.play().catch(function(e) {
-                console.warn("Errore nella riproduzione dell'audio del portone (potrebbe essere bloccato):", e);
-            });
+        // Suona il portone e la melodia tetra solo quando l'oscuramento si attiva
+        if (isDark) {
+            if (audioPortone) {
+                audioPortone.currentTime = 0;
+                audioPortone.play().catch(function(e) {
+                    console.warn("Errore riproduzione portone:", e);
+                });
+            }
+
+            // --- CHIAMATA ALLA MELODIA TETRA ---
+            // Avvia la riproduzione della melodia tetra dopo un breve ritardo per non sovrapporsi subito al portone
+            setTimeout(function() {
+                fnPlaySong(tetraMelody.slice(0)); // Usiamo .slice(0) per passare una copia dell'array
+            }, 3000); // Ritardo di 500ms
+            // --- FINE CHIAMATA ---
+
+        } else {
+            // Opzionale: Aggiungere qui logica per fermare la canzone se si disattiva il dark mode
         }
     };
 
@@ -72,30 +106,29 @@ function AudioSynthView() {
     // Key bindings, notes to keyCodes.
     var keyboard = {
 
+        /* 1 */
+        49: 'C#,-1',
+
         /* 2 */
-        50: 'C#,-1',
+        50: 'D#,-1',
 
         /* 3 */
-        51: 'D#,-1',
+        51: 'F#,-1',
+
+        /* 4 */
+        52: 'G#,-1',
 
         /* 5 */
-        53: 'F#,-1',
+        53: 'A#,-1',
 
         /* 6 */
-        54: 'G#,-1',
+        54: 'C#,0',
 
         /* 7 */
-        55: 'A#,-1',
+        55: 'D#,0',
 
-        /* 9 */
-        57: 'C#,0',
-
-        /* 0 */
-        48: 'D#,0',
-
-        /* + */
-        187: 'F#,0',
-        61: 'F#,0',
+        /* 8 */
+        56: 'F#,0',
 
         /* Q */
         81: 'C,-1',
@@ -128,22 +161,22 @@ function AudioSynthView() {
         80: 'E,0',
 
         /* [ */
-        219: 'F,0',
+        65: 'F,0',
 
         /* ] */
-        221: 'G,0',
+        83: 'G,0',
 
         /* A */
-        65: 'G#,0',
+        57: 'G#,0',
 
         /* S */
-        83: 'A#,0',
+        48: 'A#,0',
 
         /* F */
-        70: 'C#,1',
+        71: 'C#,1',
 
         /* G */
-        71: 'D#,1',
+        72: 'D#,1',
 
         /* J */
         74: 'F#,1',
@@ -155,29 +188,29 @@ function AudioSynthView() {
         76: 'A#,1',
 
         /* Z */
-        90: 'A,0', // Tasto Z per la sequenza
+        68: 'A,0', // Tasto Z per la sequenza
         /* X */
-        88: 'B,0', // Tasto X per la sequenza
+        70: 'B,0', // Tasto X per la sequenza
         /* C */
-        67: 'C,1', // Tasto C per la sequenza
+        90: 'C,1', // Tasto C per la sequenza
 
         /* V */
-        86: 'D,1',
+        88: 'D,1',
 
         /* B */
-        66: 'E,1',
+        67: 'E,1',
 
         /* N */
-        78: 'F,1',
+        86: 'F,1',
 
         /* M */
-        77: 'G,1',
+        66: 'G,1',
 
         /* , */
-        188: 'A,1',
+        78: 'A,1',
 
         /* . */
-        190: 'B,1'
+        77: 'B,1'
 
     };
 
@@ -300,6 +333,7 @@ function AudioSynthView() {
                 return false;
             }
         }
+        console.log('TASTO? ', e.keyCode);
         keysPressed.push(e.keyCode);
 
         // =============================================================
@@ -381,8 +415,9 @@ function AudioSynthView() {
 
         if(keyboard[e.keyCode]) {
             if(visualKeyboard[keyboard[e.keyCode]]) {
-                visualKeyboard[keyboard[e.keyCode]].style.backgroundColor = '#ff0000';
-                visualKeyboard[keyboard[e.keyCode]].style.marginTop = '5px';
+                visualKeyboard[keyboard[e.keyCode]].style.backgroundColor = '#645f5f';
+                visualKeyboard[keyboard[e.keyCode]].style.marginTop = '';
+                visualKeyboard[keyboard[e.keyCode]].style.paddingTop = '5px';
                 visualKeyboard[keyboard[e.keyCode]].style.boxShadow = 'none';
             }
             var arrPlayNote = keyboard[e.keyCode].split(',');
@@ -409,6 +444,7 @@ function AudioSynthView() {
                 if(visualKeyboard[keyboard[e.keyCode]]) {
                     visualKeyboard[keyboard[e.keyCode]].style.backgroundColor = '';
                     visualKeyboard[keyboard[e.keyCode]].style.marginTop = '';
+                    visualKeyboard[keyboard[e.keyCode]].style.paddingTop = '';
                     visualKeyboard[keyboard[e.keyCode]].style.boxShadow = '';
                 }
                 keysPressed.splice(i, 1);

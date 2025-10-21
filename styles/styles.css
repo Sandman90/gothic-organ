@@ -1,22 +1,36 @@
+/* Passo 1: Caricamento del Font Gotico */
+@font-face {
+    font-family: 'OldLondon';
+    src: url('../fonts/OldLondon.ttf') format('woff'), url('../fonts/Olondon_.otf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    font-family: Georgia, 'Times New Roman', serif; /* Font più vecchio e serif */
+    font-family: 'Times New Roman', Georgia, serif; /* Font più vecchio e serif */
+    font-size: 24px; /* Aumenta leggermente per leggibilità gotica */
     color: rgb(40, 30, 20); /* Colore del testo più scuro e caldo */
     padding: 15px;
     /* Sfondo leggermente invecchiato, meno saturo */
-    background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAM0lEQVQIW2P8DwQMMPDwIAODvD2YxwiXQBJESKAJQiQeHPgP0w43EsUoZFGgCQg70BwAAH4Yf3SjI6WAAAAAASUVORK5CYII=') repeat; /* Sfondo più discreto */
+    /* background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAM0lEQVQIW2P8DwQMMPDwIAODvD2YxwiXQBJESKAJQiQeHPgP0w43EsUoZFGgCQg70BwAAH4Yf3SjI6WAAAAAASUVORK5CYII=') repeat; /* Sfondo più discreto */
     background: rgb(34, 34, 34); /* Colore del testo più scuro e caldo */
 }
 
 .keyboard-options b {
-    font-weight: 800; /* Più pesante per l'effetto */
+    font-family: 'OldLondon', 'Times New Roman', Georgia, serif; /* Font più vecchio e serif */
+    /* font-weight: 800; /* Più pesante per l'effetto */
+    font-size: 24px; /* Aumenta leggermente per leggibilità gotica */
     color: rgb(60, 40, 30);
+}
+.keyboard-options .black b {
+    color: rgb(155 141 134);
 }
 
 .keyboard-options .key {
     position: absolute;
-    font-family: Georgia, serif; /* Font invecchiato */
-    font-weight: 400; /* Regolare, non troppo sottile */
-    font-size: 12px;
+    /* font-family: Georgia, serif; /* Font invecchiato */
+    /* font-weight: 400; font-size: 12px; Regolare, non troppo sottile */
+
     /* Bordo più sporco e meno definito */
     border: 1px solid rgba(40, 30, 20, 0.4);
     border-radius: 0px 0px 3px 3px; /* Bordi leggermente meno arrotondati */
@@ -26,7 +40,7 @@ body {
     -webkit-transition: margin 0.05s ease, background-color 0.05s ease, box-shadow 0.05s ease;
 }
 .keyboard-options .key:hover {
-    background-color: rgb(255, 210, 100); /* Giallo/Oro più sbiadito */
+    background-color: rgb(119, 116, 98); /* Giallo/Oro più sbiadito */
 }
 
 .keyboard-options .key .label {
@@ -39,7 +53,7 @@ body {
 }
 
 .keyboard-options .black {
-    background-color: rgb(20, 20, 20); /* Nero più profondo */
+    background-color: rgb(31, 31, 31); /* Nero più profondo */
     color: #f0f0f0; /* Bianco sporco */
     z-index: 1;
     text-shadow: 0px -1px 1px rgba(255,255,255,0.4); /* Ombra interna più tenue */
@@ -196,6 +210,6 @@ body {
 /* Stile per la modalità scura/logora */
 .keyboard-holder.dark-mode {
     /* Oscura la tastiera (filtro) */
-    filter: brightness(30%) contrast(150%) hue-rotate(180deg);
+    filter: brightness(30%) contrast(110%) hue-rotate(10deg);
     box-shadow: 0 0 50px rgba(0,0,0,0.8); /* Aggiunge un bagliore scuro intorno */
 }
