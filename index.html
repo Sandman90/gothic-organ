@@ -13,6 +13,18 @@
         <div class="content">
             <div class="field-mg-text-html-content">
                 <div class="keyboard-options">
+                    <button id="fullscreenButton" style="
+                        margin: 0 auto;
+                        padding: 8px 15px;
+                        font-family: Georgia, serif;
+                        font-size: 16px;
+                        cursor: pointer;
+                        border: 2px solid #503020;
+                        background-color: #f0e0d0;
+                        border-radius: 5px;
+                        display: none; /* Nascosto di default, mostrato solo su mobile da JS */
+                    ">Fullscreen</button>
+
                     <div class="keyboard-holder" id="keyboard" style="width: 99.96%;">
                         &nbsp;
                         <div class="white key" id="KEY_C,-1" style="width: 4.76%; height: 200px; left: 0%;">
@@ -124,9 +136,9 @@
                             <div class="label"><b>.</b><br><br>B<span name="OCTAVE_LABEL" value="1">4</span></div>
                         </div>
                     </div>
-                    <div class="keyboard-options">Range [C<span id="OCTAVE_LOWER">2</span>-B<span id="OCTAVE_UPPER">4</span>]
+                    <!--<div class="keyboard-options">Range [C<span id="OCTAVE_LOWER">2</span>-B<span id="OCTAVE_UPPER">4</span>]
                         <input id="-_OCTAVE" type="button" value="-"><input id="+_OCTAVE" type="button" value="+">
-                        <br class="br-option"><br><i>(Usa le freccie destra/sinistra per aggiustare la tastiera)</i></div>
+                        <br class="br-option"><br><i>(Usa le freccie destra/sinistra per aggiustare la tastiera)</i></div>-->
                     <script type="text/javascript">
                         <!--//--><![CDATA[// ><!--
 

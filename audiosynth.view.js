@@ -5,7 +5,7 @@ function AudioSynthView() {
 
     var __audioSynth = new AudioSynth();
     __audioSynth.setVolume(0.5);
-    var __octave = 4;
+    var __octave = 3;
 
     // Change octave
     var fnChangeOctave = function(x) {
@@ -373,11 +373,51 @@ function AudioSynthView() {
 
     window.addEventListener('keydown', fnPlayKeyboard);
     window.addEventListener('keyup', fnRemoveKeyBinding);
-    document.getElementById('-_OCTAVE').addEventListener('click', function() { fnChangeOctave(-1); });
-    document.getElementById('+_OCTAVE').addEventListener('click', function() { fnChangeOctave(1); });
+    // document.getElementById('-_OCTAVE').addEventListener('click', function() { fnChangeOctave(-1); });
+    // document.getElementById('+_OCTAVE').addEventListener('click', function() { fnChangeOctave(1); });
 
     Object.defineProperty(this, 'draw', {
         value: fnCreateKeyboard
     });
 
 }
+
+// =============================================================
+// SEZIONE: FULLSCREEN E ORIENTAMENTO MOBILE
+// =============================================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    var fsButton = document.getElementById('fullscreenButton');
+
+    // Funzione per verificare se si tratta di un dispositivo mobile (approssimazione)
+    var isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+    // Mostra il bottone solo sui dispositivi mobili (o presunti tali)
+    // if (isMobile) {
+    //     fsButton.style.display = 'block';
+    // }
+    fsButton.style.display = 'block';
+
+    fsButton.addEventListener('click', function() {
+        fsButton.style.display = 'none';
+        var docElm = document.documentElement;
+
+        // Richiesta Fullscreen cross-browser
+        if (docElm.requestFullscreen) {
+            docElm.requestFullscreen();
+        } else if (docElm.mozRequestFullScreen) { /* Firefox */
+            docElm.mozRequestFullScreen();
+        } else if (docElm.webkitRequestFullScreen) { /* Chrome, Safari and Opera */
+            docElm.webkitRequestFullScreen();
+        } else if (docElm.msRequestFullscreen) { /* IE/Edge */
+            docElm.msRequestFullscreen();
+        }
+
+        // Blocco in modalità Landscape (orizzontale)
+        if (screen.orientation && screen.orientation.lock) {
+            screen.orientation.lock('landscape').catch(function(err) {
+                console.log("Impossibile bloccare l'orientamento:", err);
+            });
+        }
+    });
+});
