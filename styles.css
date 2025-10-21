@@ -187,3 +187,15 @@ body {
     text-align: center;
     background-color: rgb(255, 250, 245);
 }
+
+/* Transizione per un effetto visivo più gradevole */
+.keyboard-holder {
+    transition: filter 0.5s ease-out;
+}
+
+/* Stile per la modalità scura/logora */
+.keyboard-holder.dark-mode {
+    /* Oscura la tastiera (filtro) */
+    filter: brightness(30%) contrast(150%) hue-rotate(180deg);
+    box-shadow: 0 0 50px rgba(0,0,0,0.8); /* Aggiunge un bagliore scuro intorno */
+}

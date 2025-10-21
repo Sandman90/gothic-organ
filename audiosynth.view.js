@@ -7,6 +7,47 @@ function AudioSynthView() {
     __audioSynth.setVolume(0.5);
     var __octave = 3;
 
+    // =============================================================
+    // MODIFICHE RICHIESTE: TASTI SEGRETI SEQUENZIALI E DARK MODE
+    // =============================================================
+    var keysDown = {}; // Traccia lo stato dei tasti premuti (per la normale funzione piano)
+    var SECRET_KEYS_SEQUENCE = [90, 88, 67]; // KeyCodes per Z, X, C (nell'ordine)
+    var sequenceIndex = 0; // Indice per tracciare il progresso nella sequenza
+    var isDark = false;
+    var audioPortone = null;
+
+    // Funzione per inizializzare l'Audio del portone
+    var initSecretAudio = function() {
+        // ASSICURATI che il file 'portone-cigolante.wav' o '.mp3' sia nel percorso corretto
+        audioPortone = new Audio('noisy-door-230898.mp3');
+    };
+
+    // Funzione per attivare/disattivare l'oscuramento della tastiera
+    var toggleDarkness = function() {
+        var keyboardHolder = document.getElementById('keyboard');
+        if (keyboardHolder) {
+            keyboardHolder.classList.toggle('dark-mode');
+            isDark = keyboardHolder.classList.contains('dark-mode');
+        }
+
+        // Suona il portone solo quando l'oscuramento si attiva
+        if (isDark && audioPortone) {
+            audioPortone.currentTime = 0;
+            audioPortone.play().catch(function(e) {
+                console.warn("Errore nella riproduzione dell'audio del portone (potrebbe essere bloccato):", e);
+            });
+        }
+    };
+
+    // Funzione per resettare la sequenza dopo un breve timeout
+    var resetSequenceTimeout = null;
+    var resetSequence = function() {
+        sequenceIndex = 0;
+        clearTimeout(resetSequenceTimeout);
+    };
+    // =============================================================
+
+
     // Change octave
     var fnChangeOctave = function(x) {
 
@@ -114,13 +155,11 @@ function AudioSynthView() {
         76: 'A#,1',
 
         /* Z */
-        90: 'A,0',
-
+        90: 'A,0', // Tasto Z per la sequenza
         /* X */
-        88: 'B,0',
-
+        88: 'B,0', // Tasto X per la sequenza
         /* C */
-        67: 'C,1',
+        67: 'C,1', // Tasto C per la sequenza
 
         /* V */
         86: 'D,1',
@@ -232,6 +271,8 @@ function AudioSynthView() {
 
         window.addEventListener(evtListener[1], function() { n = keysPressed.length; while(n--) { fnRemoveKeyBinding({keyCode:keysPressed[n]}); } });
 
+        // Inizializza l'audio del portone dopo la creazione del DOM
+        initSecretAudio();
     };
 
     // Creates our audio player
@@ -261,6 +302,31 @@ function AudioSynthView() {
         }
         keysPressed.push(e.keyCode);
 
+        // =============================================================
+        // MODIFICA: LOGICA TASTI SEGRETI SEQUENZIALI
+        // =============================================================
+        var keyCode = e.keyCode;
+
+        // Se il tasto premuto è quello atteso nella sequenza
+        if (keyCode === SECRET_KEYS_SEQUENCE[sequenceIndex]) {
+            sequenceIndex++;
+            clearTimeout(resetSequenceTimeout); // Resetta il timeout se il tasto è corretto
+
+            // Se l'intera sequenza è completata (Z -> X -> C)
+            if (sequenceIndex === SECRET_KEYS_SEQUENCE.length) {
+                toggleDarkness(); // Attiva/Disattiva l'oscuramento e suona
+                resetSequence();  // Resetta la sequenza
+            } else {
+                // Imposta un timeout per resettare la sequenza se il prossimo tasto non viene premuto velocemente
+                resetSequenceTimeout = setTimeout(resetSequence, 1500); // 1.5 secondi
+            }
+        } else if (SECRET_KEYS_SEQUENCE.includes(keyCode)) {
+            // Se il tasto premuto fa parte della sequenza ma è sbagliato, resetta la sequenza
+            resetSequence();
+        }
+        // =============================================================
+
+
         switch(e.keyCode) {
 
             // left
@@ -275,7 +341,6 @@ function AudioSynthView() {
 
             // space
             case 16:
-                break;
                 fnPlaySong([
                     ['E,0', 8],
                     ['D,0', 8],
@@ -334,6 +399,10 @@ function AudioSynthView() {
 
     var fnRemoveKeyBinding = function(e) {
 
+        // Non interferisce con la logica sequenziale
+        var keyCode = e.keyCode;
+        delete keysDown[keyCode];
+
         var i = keysPressed.length;
         while(i--) {
             if(keysPressed[i]==e.keyCode) {
@@ -373,14 +442,16 @@ function AudioSynthView() {
 
     window.addEventListener('keydown', fnPlayKeyboard);
     window.addEventListener('keyup', fnRemoveKeyBinding);
-    // document.getElementById('-_OCTAVE').addEventListener('click', function() { fnChangeOctave(-1); });
-    // document.getElementById('+_OCTAVE').addEventListener('click', function() { fnChangeOctave(1); });
 
     Object.defineProperty(this, 'draw', {
         value: fnCreateKeyboard
     });
 
 }
+
+
+
+
 
 // =============================================================
 // SEZIONE: FULLSCREEN E ORIENTAMENTO MOBILE
