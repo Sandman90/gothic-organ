@@ -276,20 +276,23 @@ function AudioSynthView() {
                     var thisKey = document.createElement('div');
                     if(n.length>1) {
                         thisKey.className = 'black key';
-                        thisKey.style.width = '30px';
+                        thisKey.style.width = '26px';
                         thisKey.style.height = '120px';
-                        thisKey.style.left = (40 * (iWhite - 1)) + 25 + 'px';
+                        thisKey.style.left = (36 * (iWhite - 1)) + 25 + 'px';
                     } else {
                         thisKey.className = 'white key';
-                        thisKey.style.width = '40px';
+                        thisKey.style.width = '36px';
                         thisKey.style.height = '200px';
-                        thisKey.style.left = 40 * iWhite + 'px';
+                        thisKey.style.left = 36 * iWhite + 'px';
                         iWhite++;
                     }
                     var label = document.createElement('div');
                     label.className = 'label';
-                    label.innerHTML = '<b>' + String.fromCharCode(reverseLookupText[n + ',' + i]) + '</b>' + '<br /><br />' + n.substr(0,1) +
-                        '<span name="OCTAVE_LABEL" value="' + i + '">' + (__octave + parseInt(i)) + '</span>' + (n.substr(1,1)?n.substr(1,1):'');
+                    label.innerHTML = '<b>' + String.fromCharCode(reverseLookupText[n + ',' + i]) + '</b>' + '<br /><br />' +
+                        '<span name="OCTAVE_LABEL" value="' + i + '"></span>';
+
+                    // label.innerHTML = '<b>' + String.fromCharCode(reverseLookupText[n + ',' + i]) + '</b>' + '<br /><br />' + n.substr(0,1) +
+                    //    '<span name="OCTAVE_LABEL" value="' + i + '">' + (__octave + parseInt(i)) + '</span>' + (n.substr(1,1)?n.substr(1,1):'');
                     thisKey.appendChild(label);
                     thisKey.setAttribute('ID', 'KEY_' + n + ',' + i);
                     thisKey.addEventListener(evtListener[0], (function(_temp) { return function() { fnPlayKeyboard({keyCode:_temp}); } })(reverseLookup[n + ',' + i]));
@@ -300,7 +303,7 @@ function AudioSynthView() {
             }
         }
 
-        visualKeyboard.style.width = iWhite * 40 + 'px';
+        visualKeyboard.style.width = (iWhite * 36 + 2 ) + 'px';
 
         window.addEventListener(evtListener[1], function() { n = keysPressed.length; while(n--) { fnRemoveKeyBinding({keyCode:keysPressed[n]}); } });
 
@@ -333,7 +336,7 @@ function AudioSynthView() {
                 return false;
             }
         }
-        console.log('TASTO? ', e.keyCode);
+        // console.log('TASTO? ', e.keyCode);
         keysPressed.push(e.keyCode);
 
         // =============================================================
@@ -416,7 +419,7 @@ function AudioSynthView() {
         if(keyboard[e.keyCode]) {
             if(visualKeyboard[keyboard[e.keyCode]]) {
                 visualKeyboard[keyboard[e.keyCode]].style.backgroundColor = '#645f5f';
-                visualKeyboard[keyboard[e.keyCode]].style.marginTop = '';
+                visualKeyboard[keyboard[e.keyCode]].style.color = '#645f5f';
                 visualKeyboard[keyboard[e.keyCode]].style.paddingTop = '5px';
                 visualKeyboard[keyboard[e.keyCode]].style.boxShadow = 'none';
             }
@@ -443,7 +446,7 @@ function AudioSynthView() {
             if(keysPressed[i]==e.keyCode) {
                 if(visualKeyboard[keyboard[e.keyCode]]) {
                     visualKeyboard[keyboard[e.keyCode]].style.backgroundColor = '';
-                    visualKeyboard[keyboard[e.keyCode]].style.marginTop = '';
+                    visualKeyboard[keyboard[e.keyCode]].style.color = '';
                     visualKeyboard[keyboard[e.keyCode]].style.paddingTop = '';
                     visualKeyboard[keyboard[e.keyCode]].style.boxShadow = '';
                 }

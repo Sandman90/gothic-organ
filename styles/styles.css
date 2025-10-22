@@ -3,7 +3,8 @@ body {
     /* text-transform: lowercase; */
     font-size: 24px; /* Aumenta leggermente per leggibilità gotica */
     color: rgb(40, 30, 20); /* Colore del testo più scuro e caldo */
-    padding: 15px;
+    padding: 0;
+    margin: 0;
     /* Sfondo leggermente invecchiato, meno saturo */
     /* background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAM0lEQVQIW2P8DwQMMPDwIAODvD2YxwiXQBJESKAJQiQeHPgP0w43EsUoZFGgCQg70BwAAH4Yf3SjI6WAAAAAASUVORK5CYII=') repeat; /* Sfondo più discreto */
     background: rgb(34, 34, 34); /* Colore del testo più scuro e caldo */
@@ -33,35 +34,38 @@ body {
     box-shadow: 0 4px 1px rgba(40, 30, 20, 0.3);
     -webkit-transition: margin 0.05s ease, background-color 0.05s ease, box-shadow 0.05s ease;
 }
-.keyboard-options .key:hover {
-    background-color: rgb(119, 116, 98); /* Giallo/Oro più sbiadito */
-}
 
 .keyboard-options .key .label {
     position: absolute;
     bottom: 4px; /* Abbassato leggermente */
     text-align: center;
-    left: 0px;
-    right: 0px;
-    text-shadow: 0px -1px 0px rgba(0,0,0,0.1); /* Leggera ombra scura */
+    left: 0;
+    right: 0;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.1); /* Leggera ombra scura */
+}
+
+.keyboard-options .key:hover {
+    background-color: rgb(119, 116, 98); /* Giallo/Oro più sbiadito */
+    color: rgb(119, 116, 98);
+    text-shadow: none;
 }
 
 .keyboard-options .black {
     background-color: rgb(31, 31, 31); /* Nero più profondo */
-    color: #f0f0f0; /* Bianco sporco */
+    color: rgb(31, 31, 31); /* Bianco sporco */
     z-index: 1;
-    text-shadow: 0px -1px 1px rgba(255,255,255,0.4); /* Ombra interna più tenue */
+    text-shadow: 0 -1px 1px rgba(255,255,255,0.4); /* Ombra interna più tenue */
 }
 
 .keyboard-options .white {
     background-color: rgb(245, 240, 230); /* Avorio/Crema anziché bianco puro */
-    color: rgb(40, 30, 20);
+    color: rgb(245, 240, 230);
     z-index: 0;
-    text-shadow: 0px 1px 1px rgba(40, 30, 20, 0.3); /* Ombra chiara, meno contrasto */
+    text-shadow: 0 1px 1px rgba(40, 30, 20, 0.3); /* Ombra chiara, meno contrasto */
 }
 
 .keyboard-options .title {
-    text-shadow: 0px 2px 2px rgba(0,0,0,0.5); /* Ombra più pesante per un titolo classico */
+    text-shadow: 0 2px 2px rgba(0,0,0,0.5); /* Ombra più pesante per un titolo classico */
     font-size: 38px; /* Leggermente rimpicciolito */
     font-weight: 900; /* Molto pesante */
     font-family: Georgia, serif;
@@ -75,8 +79,8 @@ body {
     font-size: 26px; /* Leggermente rimpicciolito */
     padding: 10px;
     font-weight: 100;
-    margin: 10px 0px;
-    text-shadow: 0px 1px 0px rgba(220,220,220,0.7); /* Ombra molto tenue */
+    margin: 10px 0;
+    text-shadow: 0 1px 0 rgba(220,220,220,0.7); /* Ombra molto tenue */
     text-align:center;
 }
 .keyboard-options .sub a, .sub a:link, .sub a:visited, .sub a:active {
@@ -103,7 +107,7 @@ body {
     text-align: center;
     font-size: 11px; /* Rimpicciolito */
     font-weight: 300;
-    padding:10px;
+    padding: 0;
 }
 
 .keyboard-holder {
@@ -113,7 +117,6 @@ body {
     user-select:none;
     -webkit-user-select:none;
     -moz-user-select:none;
-    -o-user-select:none;
     /* Aggiunto un bordo per simulare la cassa dell'organo */
     border: 5px solid rgb(60, 40, 30);
     border-radius: 8px;
@@ -127,17 +130,17 @@ body {
 }
 .keyboard-options .about .header {
     /* Colori più spenti per il pannello informativo */
-    background-color:rgba(70, 50, 40, 0.8);
-    border-radius: 8px 8px 0px 0px;
-    color:rgb(255, 240, 220); /* Bianco sporco/crema */
-    text-shadow:0px 1px 1px rgb(30,20,10);
+    background-color: rgba(70, 50, 40, 0.8);
+    border-radius: 8px 8px 0 0;
+    color: rgb(255, 240, 220); /* Bianco sporco/crema */
+    text-shadow: 0 1px 1px rgb(30,20,10);
     position: relative;
     max-width: 600px;
     margin: 0 auto;
     font-size: 28px; /* Leggermente rimpicciolito */
     font-weight: bold;
     padding: 15px;
-    text-align:center;
+    text-align: center;
 }
 .keyboard-options .about .contents {
     font-size: 15px; /* Rimpicciolito */
@@ -148,14 +151,14 @@ body {
     text-align: left;
     position: relative;
     color: rgb(40, 30, 20);
-    text-shadow: 0px 1px 0px rgba(240,240,240,0.8); /* Ombra molto tenue */
-    box-shadow: 0px 5px 10px rgba(40, 30, 20, 0.5); /* Ombra più scura e calda */
-    -webkit-box-shadow: 0px 5px 10px rgba(40, 30, 20, 0.5);
+    text-shadow: 0 1px 0 rgba(240,240,240,0.8); /* Ombra molto tenue */
+    box-shadow: 0 5px 10px rgba(40, 30, 20, 0.5); /* Ombra più scura e calda */
+    -webkit-box-shadow: 0 5px 10px rgba(40, 30, 20, 0.5);
     border: 1px solid rgb(180, 170, 160); /* Bordo invecchiato */
 }
 .keyboard-options .about .footer {
     background-color:rgba(70, 50, 40, 0.8);
-    border-radius: 0px 0px 8px 8px;
+    border-radius: 0 0 8px 8px;
     color:rgb(255, 240, 220);
     position: relative;
     max-width: 600px;
@@ -204,6 +207,6 @@ body {
 /* Stile per la modalità scura/logora */
 .keyboard-holder.dark-mode {
     /* Oscura la tastiera (filtro) */
-    filter: brightness(30%) contrast(110%) hue-rotate(10deg);
-    box-shadow: 0 0 50px rgba(0,0,0,0.8); /* Aggiunge un bagliore scuro intorno */
+    filter: brightness(50%) contrast(110%) hue-rotate(10deg);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.8); /* Aggiunge un bagliore scuro intorno */
 }

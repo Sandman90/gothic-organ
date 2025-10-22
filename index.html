@@ -7,6 +7,7 @@
     <script src="js/audiosynth.view.js"></script>
     <link rel="stylesheet" href="styles/styles.css" />
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
 </head>
 <body>
 <div class="field-mg-paragraph">
@@ -26,117 +27,7 @@
                         display: none; /* Nascosto di default, mostrato solo su mobile da JS */
                     ">Fullscreen</button>
 
-                    <div class="keyboard-holder" id="keyboard" style="width: 99.96%;">
-                        &nbsp;
-                        <div class="white key" id="KEY_C,-1" style="width: 4.76%; height: 200px; left: 0%;">
-                            <div class="label"><b>Q</b><br><br>C<span name="OCTAVE_LABEL" value="-1">2</span></div>
-                        </div>
-                        <div class="black key" id="KEY_C#,-1" style="width: 3.5%; height: 120px; left: 2.97%;">
-                            <div class="label"><b>2</b><br><br>C<span name="OCTAVE_LABEL" value="-1">2</span>#</div>
-                        </div>
-                        <div class="white key" id="KEY_D,-1" style="width: 4.76%; height: 200px; left: 4.7%;">
-                            <div class="label"><b>W</b><br><br>D<span name="OCTAVE_LABEL" value="-1">2</span></div>
-                        </div>
-                        <div class="black key" id="KEY_D#,-1" style="width: 3.5%; height: 120px; left: 7.73%;">
-                            <div class="label"><b>3</b><br><br>D<span name="OCTAVE_LABEL" value="-1">2</span>#</div>
-                        </div>
-                        <div class="white key" id="KEY_E,-1" style="width: 4.76%; height: 200px; left: 9.4%;">
-                            <div class="label"><b>E</b><br><br>E<span name="OCTAVE_LABEL" value="-1">2</span></div>
-                        </div>
-                        <div class="white key" id="KEY_F,-1" style="width: 4.76%; height: 200px; left: 14.1%;">
-                            <div class="label"><b>R</b><br><br>F<span name="OCTAVE_LABEL" value="-1">2</span></div>
-                        </div>
-                        <div class="black key" id="KEY_F#,-1" style="width: 3.5%; height: 120px; left: 17.25%;">
-                            <div class="label"><b>5</b><br><br>F<span name="OCTAVE_LABEL" value="-1">2</span>#</div>
-                        </div>
-                        <div class="white key" id="KEY_G,-1" style="width: 4.76%; height: 200px; left: 18.8%;">
-                            <div class="label"><b>T</b><br><br>G<span name="OCTAVE_LABEL" value="-1">2</span></div>
-                        </div>
-                        <div class="black key" id="KEY_G#,-1" style="width: 3.5%; height: 120px; left: 22.01%;">
-                            <div class="label"><b>6</b><br><br>G<span name="OCTAVE_LABEL" value="-1">2</span>#</div>
-                        </div>
-                        <div class="white key" id="KEY_A,-1" style="width: 4.76%; height: 200px; left: 23.5%;">
-                            <div class="label"><b>Y</b><br><br>A<span name="OCTAVE_LABEL" value="-1">2</span></div>
-                        </div>
-                        <div class="black key" id="KEY_A#,-1" style="width: 3.5%; height: 120px; left: 26.77%;">
-                            <div class="label"><b>7</b><br><br>A<span name="OCTAVE_LABEL" value="-1">2</span>#</div>
-                        </div>
-                        <div class="white key" id="KEY_B,-1" style="width: 4.76%; height: 200px; left: 28.2%;">
-                            <div class="label"><b>U</b><br><br>B<span name="OCTAVE_LABEL" value="-1">2</span></div>
-                        </div>
-                        <div class="white key" id="KEY_C,0" style="width: 4.76%; height: 200px; left: 32.9%;">
-                            <div class="label"><b>I</b><br><br>C<span name="OCTAVE_LABEL" value="0">3</span></div>
-                        </div>
-                        <div class="black key" id="KEY_C#,0" style="width: 3.5%; height: 120px; left: 36.29%;">
-                            <div class="label"><b>9</b><br><br>C<span name="OCTAVE_LABEL" value="0">3</span>#</div>
-                        </div>
-                        <div class="white key" id="KEY_D,0" style="width: 4.76%; height: 200px; left: 37.6%;">
-                            <div class="label"><b>O</b><br><br>D<span name="OCTAVE_LABEL" value="0">3</span></div>
-                        </div>
-                        <div class="black key" id="KEY_D#,0" style="width: 3.5%; height: 120px; left: 41.05%;">
-                            <div class="label"><b>0</b><br><br>D<span name="OCTAVE_LABEL" value="0">3</span>#</div>
-                        </div>
-                        <div class="white key" id="KEY_E,0" style="width: 4.76%; height: 200px; left: 42.3%;">
-                            <div class="label"><b>P</b><br><br>E<span name="OCTAVE_LABEL" value="0">3</span></div>
-                        </div>
-                        <div class="white key" id="KEY_F,0" style="width: 4.76%; height: 200px; left: 47%;">
-                            <div class="label"><b>[</b><br><br>F<span name="OCTAVE_LABEL" value="0">3</span></div>
-                        </div>
-                        <div class="black key" id="KEY_F#,0" style="width: 3.5%; height: 120px; left: 50.57%;">
-                            <div class="label"><b>=</b><br><br>F<span name="OCTAVE_LABEL" value="0">3</span>#</div>
-                        </div>
-                        <div class="white key" id="KEY_G,0" style="width: 4.76%; height: 200px; left: 51.7%;">
-                            <div class="label"><b>]</b><br><br>G<span name="OCTAVE_LABEL" value="0">3</span></div>
-                        </div>
-                        <div class="black key" id="KEY_G#,0" style="width: 3.5%; height: 120px; left: 55.33%;">
-                            <div class="label"><b>A</b><br><br>G<span name="OCTAVE_LABEL" value="0">3</span>#</div>
-                        </div>
-                        <div class="white key" id="KEY_A,0" style="width: 4.76%; height: 200px; left: 56.4%;">
-                            <div class="label"><b>Z</b><br><br>A<span name="OCTAVE_LABEL" value="0">3</span></div>
-                        </div>
-                        <div class="black key" id="KEY_A#,0" style="width: 3.5%; height: 120px; left: 60.09%;">
-                            <div class="label"><b>S</b><br><br>A<span name="OCTAVE_LABEL" value="0">3</span>#</div>
-                        </div>
-                        <div class="white key" id="KEY_B,0" style="width: 4.76%; height: 200px; left: 61.1%;">
-                            <div class="label"><b>X</b><br><br>B<span name="OCTAVE_LABEL" value="0">3</span></div>
-                        </div>
-                        <div class="white key" id="KEY_C,1" style="width: 4.76%; height: 200px; left: 65.8%;">
-                            <div class="label"><b>C</b><br><br>C<span name="OCTAVE_LABEL" value="1">4</span></div>
-                        </div>
-                        <div class="black key" id="KEY_C#,1" style="width: 3.5%; height: 120px; left: 69.61%;">
-                            <div class="label"><b>F</b><br><br>C<span name="OCTAVE_LABEL" value="1">4</span>#</div>
-                        </div>
-                        <div class="white key" id="KEY_D,1" style="width: 4.76%; height: 200px; left: 70.5%;">
-                            <div class="label"><b>V</b><br><br>D<span name="OCTAVE_LABEL" value="1">4</span></div>
-                        </div>
-                        <div class="black key" id="KEY_D#,1" style="width: 3.5%; height: 120px; left: 74.37%;">
-                            <div class="label"><b>G</b><br><br>D<span name="OCTAVE_LABEL" value="1">4</span>#</div>
-                        </div>
-                        <div class="white key" id="KEY_E,1" style="width: 4.76%; height: 200px; left: 75.2%;">
-                            <div class="label"><b>B</b><br><br>E<span name="OCTAVE_LABEL" value="1">4</span></div>
-                        </div>
-                        <div class="white key" id="KEY_F,1" style="width: 4.76%; height: 200px; left: 79.9%;">
-                            <div class="label"><b>N</b><br><br>F<span name="OCTAVE_LABEL" value="1">4</span></div>
-                        </div>
-                        <div class="black key" id="KEY_F#,1" style="width: 3.5%; height: 120px; left: 83.89%;">
-                            <div class="label"><b>J</b><br><br>F<span name="OCTAVE_LABEL" value="1">4</span>#</div>
-                        </div>
-                        <div class="white key" id="KEY_G,1" style="width: 4.76%; height: 200px; left: 84.6%;">
-                            <div class="label"><b>M</b><br><br>G<span name="OCTAVE_LABEL" value="1">4</span></div>
-                        </div>
-                        <div class="black key" id="KEY_G#,1" style="width: 3.5%; height: 120px; left: 88.65%;">
-                            <div class="label"><b>K</b><br><br>G<span name="OCTAVE_LABEL" value="1">4</span>#</div>
-                        </div>
-                        <div class="white key" id="KEY_A,1" style="width: 4.76%; height: 200px; left: 89.3%;">
-                            <div class="label"><b>,</b><br><br>A<span name="OCTAVE_LABEL" value="1">4</span></div>
-                        </div>
-                        <div class="black key" id="KEY_A#,1" style="width: 3.5%; height: 120px; left: 93.41%;">
-                            <div class="label"><b>L</b><br><br>A<span name="OCTAVE_LABEL" value="1">4</span>#</div>
-                        </div>
-                        <div class="white key" id="KEY_B,1" style="width: 4.76%; height: 200px; left: 94%;">
-                            <div class="label"><b>.</b><br><br>B<span name="OCTAVE_LABEL" value="1">4</span></div>
-                        </div>
-                    </div>
+                    <div class="keyboard-holder" id="keyboard" style="width: 50.96%;"></div>
                     <!--<div class="keyboard-options">Range [C<span id="OCTAVE_LOWER">2</span>-B<span id="OCTAVE_UPPER">4</span>]
                         <input id="-_OCTAVE" type="button" value="-"><input id="+_OCTAVE" type="button" value="+">
                         <br class="br-option"><br><i>(Usa le freccie destra/sinistra per aggiustare la tastiera)</i></div>-->
@@ -147,7 +38,7 @@
                         var a = new AudioSynthView();
                         a.draw();
                         if (window.matchMedia("(orientation: portrait)").matches) {
-                            alert("Ruota il telefono in modalità landscape per una visualizzazione del piano!")
+                            // alert("Ruota il telefono in modalità landscape per una visualizzazione del piano!")
                         }
 
                         //--><!]]>
