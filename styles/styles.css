@@ -28,7 +28,6 @@ body {
     /* font-family: Georgia, serif; /* Font invecchiato */
     /* font-weight: 400; font-size: 12px; Regolare, non troppo sottile */
 
-    /* Bordo più sporco e meno definito */
     border: 1px solid rgba(40, 30, 20, 0.4);
     border-radius: 0 0 3px 3px; /* Bordi leggermente meno arrotondati */
     cursor:pointer;
@@ -39,15 +38,15 @@ body {
 
 .keyboard-options .key .label {
     position: absolute;
-    bottom: 4px; /* Abbassato leggermente */
+    bottom: 4px;
     text-align: center;
     left: 0;
     right: 0;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.1); /* Leggera ombra scura */
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
 }
 
 .keyboard-options .key:hover {
-    background-color: rgb(119, 116, 98); /* Giallo/Oro più sbiadito */
+    background-color: #777462; /* Giallo/Oro più sbiadito */
     color: rgb(119, 116, 98);
     text-shadow: none;
 }
@@ -78,7 +77,7 @@ body {
 
 .keyboard-options .sub {
     color: rgb(100, 80, 70); /* Grigio-marrone */
-    font-size: 26px; /* Leggermente rimpicciolito */
+    font-size: 26px;
     padding: 10px;
     font-weight: 100;
     margin: 10px 0;
@@ -220,4 +219,57 @@ body {
     text-align: center;
     line-height: 2;
     font-size: 16px;
+}
+
+
+/** Credits */
+#credits {
+    background-color: #321c45;
+    border-radius: 10px;
+    padding: 6px 24px;
+    width: 16rem;
+    height: 80px;
+    margin: 3rem auto;
+    box-shadow: 0 2px 10px #00000029;
+}
+#credits p {
+    margin: 0 0 2px 3rem;
+    font-size: 14px;
+    font-style: italic;
+    color: #e6ceff;
+}
+#logo {
+    background-image: url(https://tools.obyte.it/assets/images/logo.webp);
+    float: left;
+    display: block;
+    margin: 0;
+    position: relative;
+}
+#logo:hover a.hover {
+    opacity: 1;
+}
+#logo a {
+    display: block;
+    width: 256px;
+    height: 49px;
+}
+#logo a.hover {
+    background-image: url(https://tools.obyte.it/assets/images/logoHover.webp);
+    width: 42px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
