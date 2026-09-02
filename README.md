@@ -1,3 +1,3 @@
-# audiosynth-old-organ
+# gothic-organ
 
 Source: https://github.com/keithwhor/audiosynth/tree/master
